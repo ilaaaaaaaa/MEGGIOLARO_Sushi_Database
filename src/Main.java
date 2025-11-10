@@ -1,3 +1,4 @@
+import javax.xml.crypto.Data;
 import java.util.Scanner;
 import java.sql.SQLException;
 
@@ -7,7 +8,7 @@ public class Main {
         Database db = null;
 
         try {
-            db = new Database();
+            db = Database.getInstance();
         } catch (SQLException e) {
             System.out.println("Errore di connessione al database!");
             return;

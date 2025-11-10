@@ -4,11 +4,19 @@ public class Database {
     // connetti
     // query
     private Connection connection;
+    private static Database instance; // metto un oggetto database nella classe Database
 
-    public  Database() throws SQLException {
+    private Database() throws SQLException {
         String url = "jdbc:sqlite:database/sushi.db";
         connection = DriverManager.getConnection(url);
         System.out.println("Connessione al database");
+    }
+
+    // Metodo get
+    public static Database getInstance() throws SQLException {
+        if(instance == null)
+            instance = new Database();
+        return instance;
     }
 
     // Metodo per il CREATE (Insert in SQL)
